@@ -1,0 +1,356 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e9edf0;
+    color: #303b45;
+}
+
+/* Основная часть */
+
+.scene {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 25px 15px;
+}
+
+
+/* Песочные часы */
+
+.hourglass {
+    width: 210px;
+    height: 350px;
+    position: relative;
+    transition: transform 0.4s;
+}
+
+.hourglass:hover {
+    transform: scale(1.04);
+}
+
+/* Верхнее и нижнее основание */
+
+.top-frame,
+.bottom-frame {
+    position: absolute;
+    left: 0;
+    width: 210px;
+    height: 15px;
+    background: #846443;
+    border: 2px solid #674c32;
+    border-radius: 4px;
+    z-index: 4;
+}
+
+.top-frame {
+    top: 0;
+}
+
+.bottom-frame {
+    bottom: 0;
+}
+
+/* Стеклянная часть */
+
+.glass {
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    width: 190px;
+    height: 325px;
+
+    background: rgba(170, 200, 210, 0.25);
+    border-left: 3px solid rgba(255, 255, 255, 0.8);
+    border-right: 3px solid rgba(255, 255, 255, 0.8);
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        56% 48%,
+        56% 52%,
+        100% 100%,
+        0 100%,
+        44% 52%,
+        44% 48%
+    );
+
+    overflow: hidden;
+}
+
+/* Блики на стекле */
+
+.glass-shine {
+    position: absolute;
+    width: 5px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 10px;
+    z-index: 3;
+}
+
+.shine-left {
+    left: 16px;
+    top: 35px;
+}
+
+.shine-right {
+    right: 16px;
+    bottom: 35px;
+    height: 75px;
+}
+
+/* Верхняя камера */
+
+.top-chamber {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+/* Песок сверху */
+
+.sand-top {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+
+    background: #d9a34e;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 18%,
+        70% 65%,
+        55% 88%,
+        50% 100%,
+        45% 88%,
+        30% 65%,
+        0 18%
+    );
+
+    animation: top-empty 8s linear infinite;
+}
+
+/* Нижняя камера */
+
+.bottom-chamber {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+/* Песок снизу */
+
+.sand-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+
+    background: #d9a34e;
+
+    clip-path: polygon(
+        50% 0,
+        60% 8%,
+        100% 78%,
+        100% 100%,
+        0 100%,
+        0 78%,
+        40% 8%
+    );
+
+    animation: bottom-fill 8s linear infinite;
+}
+
+
+/* Несколько отдельных песчинок */
+
+.sand-grain {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #c58c39;
+    border-radius: 50%;
+    opacity: 0;
+
+    animation: grain-fall 8s linear infinite;
+}
+
+.grain-one {
+    left: 46%;
+}
+
+.grain-two {
+    left: 53%;
+    animation-delay: 0.3s;
+}
+
+.grain-three {
+    left: 50%;
+    animation-delay: 0.6s;
+}
+
+/* Анимация верхнего песка */
+
+@keyframes top-empty {
+
+    0% {
+        height: 90%;
+    }
+
+    55% {
+        height: 0;
+    }
+
+    90% {
+        height: 0;
+    }
+
+    100% {
+        height: 90%;
+    }
+}
+
+/* Анимация нижнего песка */
+
+@keyframes bottom-fill {
+
+    0% {
+        height: 0;
+    }
+
+    55% {
+        height: 90%;
+    }
+
+    90% {
+        height: 90%;
+    }
+
+    100% {
+        height: 0;
+    }
+}
+
+/* Падение песка */
+
+@keyframes falling {
+
+    0% {
+        height: 15%;
+        opacity: 1;
+    }
+
+    50% {
+        height: 15%;
+        opacity: 1;
+    }
+
+    55% {
+        height: 0;
+        opacity: 0;
+    }
+
+    100% {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+/* Движение песчинок */
+
+@keyframes grain-fall {
+
+    0% {
+        top: 49%;
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        top: 58%;
+        opacity: 1;
+    }
+
+    55% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Подпись */
+
+.caption {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #75818b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicator {
+    width: 9px;
+    height: 9px;
+    background: #67a77e;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+    50% {
+        opacity: 0.3;
+    }
+
+}
+
+/* Мобильная версия */
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-bottom: 25px;
+    }
+
+    .hourglass {
+        transform: scale(0.85);
+    }
+
+    .hourglass:hover {
+        transform: scale(0.88);
+    }
+
+    .caption {
+        font-size: 11px;
+        margin-top: 20px;
+    }
+
+}

@@ -1,0 +1,276 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(
+        180deg,
+        #07152f 0%,
+        #142e50 65%,
+        #294968 100%
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== ЁЛКА ===== */
+
+.tree {
+    position: relative;
+    width: 360px;
+    height: 530px;
+    z-index: 2;
+}
+
+/* ===== ВЕТКИ ===== */
+
+.branch {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        90deg,
+        #07522e,
+        #12804a 50%,
+        #07522e
+    );
+
+    clip-path: polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+.branch-top {
+    top: 65px;
+    width: 145px;
+    height: 165px;
+}
+
+.branch-middle {
+    top: 155px;
+    width: 245px;
+    height: 200px;
+}
+
+.branch-bottom {
+    top: 255px;
+    width: 355px;
+    height: 230px;
+}
+
+/* ===== СТВОЛ ===== */
+
+.trunk {
+    position: absolute;
+    top: 460px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 65px;
+    height: 80px;
+
+    background: linear-gradient(
+        90deg,
+        #60351d,
+        #a16b3e,
+        #60351d
+    );
+}
+
+/* ===== ЗВЕЗДА ===== */
+
+.star {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 65px;
+    height: 65px;
+
+    background: #ffd84b;
+
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 95%,
+        50% 72%,
+        21% 95%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+
+    filter: drop-shadow(0 0 12px #ffdf65);
+}
+
+/* ===== ИГРУШКИ ===== */
+
+.decoration {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    z-index: 3;
+
+    box-shadow:
+        inset -4px -4px 7px rgba(0, 0, 0, 0.25),
+        0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+.red {
+    background: radial-gradient(
+        circle at 30% 30%,
+        #ffb0a8,
+        #e52e35 65%
+    );
+}
+
+.gold {
+    background: radial-gradient(
+        circle at 30% 30%,
+        #fff2a1,
+        #f5b82c 65%
+    );
+}
+
+.blue {
+    background: radial-gradient(
+        circle at 30% 30%,
+        #a9eaff,
+        #2586d8 65%
+    );
+}
+
+.decoration-one {
+    top: 150px;
+    left: 165px;
+}
+
+.decoration-two {
+    top: 220px;
+    left: 115px;
+}
+
+.decoration-three {
+    top: 245px;
+    left: 220px;
+}
+
+.decoration-four {
+    top: 315px;
+    left: 55px;
+}
+
+.decoration-five {
+    top: 340px;
+    left: 165px;
+}
+
+.decoration-six {
+    top: 305px;
+    left: 280px;
+}
+
+.decoration-seven {
+    top: 405px;
+    left: 110px;
+}
+
+.decoration-eight {
+    top: 425px;
+    left: 230px;
+}
+
+.decoration-nine {
+    top: 385px;
+    left: 175px;
+}
+
+/* ===== СНЕГ ===== */
+
+.snow {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.snow-one {
+    top: 15%;
+    left: 15%;
+}
+
+.snow-two {
+    top: 25%;
+    left: 80%;
+}
+
+.snow-three {
+    top: 55%;
+    left: 12%;
+}
+
+.snow-four {
+    top: 65%;
+    left: 88%;
+}
+
+.snow-five {
+    top: 12%;
+    left: 60%;
+}
+
+.snow-six {
+    top: 75%;
+    left: 75%;
+}
+
+/* ===== ЗЕМЛЯ ===== */
+
+.snow-ground {
+    position: absolute;
+    bottom: -100px;
+    width: 120%;
+    height: 190px;
+    left: -10%;
+
+    background: #edf5fa;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+}
+
+
+
+
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 500px) {
+
+    .tree {
+        transform: scale(0.75);
+        transform-origin: center center;
+    }
+
+
+}
