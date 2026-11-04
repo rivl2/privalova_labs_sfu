@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.layout {
+    display: none;
+    width: 100%;
+}
+
+.figure {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: 100px;
+    width: 100%;
+}
+
+.cell {
+    min-width: 0;
+    min-height: 0;
+    border: 15px solid #000;
+}
+
+/* Цвета */
+
+.c-indianred { background: #CD5C5C; }
+.c-crimson { background: #DC143C; }
+.c-darkred { background: #8B0000; }
+
+.c-pink { background: #FFC0CB; }
+.c-hotpink { background: #FF69B4; }
+.c-mediumvioletred { background: #C71585; }
+
+.c-greenyellow { background: #ADFF2F; }
+.c-lime { background: #00FF00; }
+.c-limegreen { background: #32CD32; }
+.c-mediumspringgreen { background: #00FA9A; }
+.c-darkgreen { background: #006400; }
+.c-seagreen { background: #2E8B57; }
+.c-yellowgreen { background: #9ACD32; }
+.c-olive { background: #808000; }
+.c-mediumaquamarine { background: #66CDAA; }
+.c-darkolivegreen { background: #556B2F; }
+.c-teal { background: #008080; }
+
+.c-lightsalmon { background: #FFA07A; }
+.c-orangered { background: #FF4500; }
+.c-orange { background: #FFA500; }
+
+.crosybrown { background: #BC8F8F; }
+.c-sandybrown { background: #F4A460; }
+.c-chocolate { background: #D2691E; }
+.c-saddlebrown { background: #8B4513; }
+.c-brown { background: #A52A2A; }
+.c-maroon { background: #800000; }
+
+
+/* 320px */
+
+@media (max-width: 767px) {
+    .container {
+        width: 360px;
+        max-width: 100%;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .mobile-first {
+        grid-template-rows: 100px;
+    }
+
+    .mobile-second {
+        grid-template-rows: repeat(4, 100px);
+    }
+
+    .mobile-green {
+        grid-template-rows: repeat(4, 100px);
+    }
+
+    .mobile-green .cell:nth-child(1) { grid-row: 1; }
+    .mobile-green .cell:nth-child(2) { grid-row: 1; }
+    .mobile-green .cell:nth-child(3) { grid-row: 1; }
+    .mobile-green .cell:nth-child(4) { grid-row: 2; }
+    .mobile-green .cell:nth-child(5) { grid-row: 2; }
+    .mobile-green .cell:nth-child(6) { grid-row: 3; }
+    .mobile-green .cell:nth-child(7) { grid-row: 3; }
+    .mobile-green .cell:nth-child(8) { grid-row: 4; }
+    .mobile-green .cell:nth-child(9) { grid-row: 4; }
+
+    .mobile-fourth {
+        grid-template-rows: 100px;
+    }
+
+    .mobile-brown {
+        grid-template-rows: repeat(6, 100px);
+    }
+
+    .mobile-brown .cell {
+        grid-column: 1 / 13;
+    }
+}
+
+
+/* 768px */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        width: 768px;
+        max-width: 100%;
+    }
+
+    .tablet {
+        display: block;
+    }
+
+    .tablet-first {
+        grid-template-rows: 100px;
+    }
+
+    .tablet-second {
+        grid-template-rows: repeat(2, 100px);
+    }
+
+    .tablet-second .cell:nth-child(1) { grid-row: 1; }
+    .tablet-second .cell:nth-child(2) { grid-row: 2; }
+
+    .tablet-green {
+        grid-template-rows: repeat(3, 100px);
+    }
+
+    .tablet-green .cell:nth-child(-n+3) { grid-row: 1; }
+    .tablet-green .cell:nth-child(4),
+    .tablet-green .cell:nth-child(5),
+    .tablet-green .cell:nth-child(6),
+    .tablet-green .cell:nth-child(7) { grid-row: 2; }
+    .tablet-green .cell:nth-child(8),
+    .tablet-green .cell:nth-child(9),
+    .tablet-green .cell:nth-child(10),
+    .tablet-green .cell:nth-child(11) { grid-row: 3; }
+
+    .tablet-fourth {
+        grid-template-rows: 100px;
+    }
+
+    .tablet-brown {
+        grid-template-rows: repeat(2, 100px);
+    }
+}
+
+
+/* 1200px */
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        max-width: 100%;
+    }
+
+    .desktop {
+        display: block;
+    }
+
+    .desktop-first {
+        grid-template-rows: 100px;
+    }
+
+    .desktop-second {
+        grid-template-rows: repeat(2, 100px);
+    }
+
+    .desktop-second .cell:nth-child(1),
+    .desktop-second .cell:nth-child(2) {
+        grid-row: 1;
+    }
+
+    .desktop-second .cell:nth-child(3) {
+        grid-row: 2;
+    }
+
+    .desktop-green {
+        grid-template-rows: repeat(3, 100px);
+    }
+
+    .green-right {
+        grid-column: 4 / 13;
+        grid-row: 1 / 4;
+
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(3, 100px);
+    }
+
+    .desktop-fourth {
+        grid-template-rows: 100px;
+    }
+
+    .desktop-brown {
+        grid-template-rows: repeat(2, 100px);
+    }
+}

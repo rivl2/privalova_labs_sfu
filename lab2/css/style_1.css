@@ -1,0 +1,28 @@
+body {
+    all: initial;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number {
+    display: flex;
+    gap: 20px;
+}
+
+.digit {
+    display: flex;
+    flex-wrap: wrap;
+    width: 120px;
+}
+
+.digit div {
+    width: 40px;
+    height: 40px;
+}
+
+.cell {
+    background-color: black;
+}
