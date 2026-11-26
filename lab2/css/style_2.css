@@ -1,12 +1,17 @@
-* {
+#task2 {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    background: #000;
+}
+
+#task2 * {
     box-sizing: border-box;
 }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    background: #000;
+#task2 .container {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .container {
@@ -14,19 +19,19 @@ body {
     margin: 0 auto;
 }
 
-.layout {
+#task2 .layout {
     display: none;
     width: 100%;
 }
 
-.figure {
+#task2 .figure {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-auto-rows: 100px;
     width: 100%;
 }
 
-.cell {
+#task2 .cell {
     min-width: 0;
     min-height: 0;
     border: 15px solid #000;
@@ -74,19 +79,19 @@ body {
         max-width: 100%;
     }
 
-    .mobile {
+    #task2 .mobile {
         display: block;
     }
 
-    .mobile-first {
+    #task2 .mobile-first {
         grid-template-rows: 100px;
     }
 
-    .mobile-second {
+    #task2 .mobile-second {
         grid-template-rows: repeat(4, 100px);
     }
 
-    .mobile-green {
+    #task2 .mobile-green {
         grid-template-rows: repeat(4, 100px);
     }
 
@@ -100,15 +105,15 @@ body {
     .mobile-green .cell:nth-child(8) { grid-row: 4; }
     .mobile-green .cell:nth-child(9) { grid-row: 4; }
 
-    .mobile-fourth {
+    #task2 .mobile-fourth {
         grid-template-rows: 100px;
     }
 
-    .mobile-brown {
+    #task2 .mobile-brown {
         grid-template-rows: repeat(6, 100px);
     }
 
-    .mobile-brown .cell {
+    #task2 .mobile-brown .cell {
         grid-column: 1 / 13;
     }
 }
@@ -122,22 +127,22 @@ body {
         max-width: 100%;
     }
 
-    .tablet {
+    #task2 .tablet {
         display: block;
     }
 
-    .tablet-first {
+    #task2 .tablet-first {
         grid-template-rows: 100px;
     }
 
-    .tablet-second {
+    #task2 .tablet-second {
         grid-template-rows: repeat(2, 100px);
     }
 
-    .tablet-second .cell:nth-child(1) { grid-row: 1; }
-    .tablet-second .cell:nth-child(2) { grid-row: 2; }
+    #task2 .tablet-second .cell:nth-child(1) { grid-row: 1; }
+    #task2 .tablet-second .cell:nth-child(2) { grid-row: 2; }
 
-    .tablet-green {
+    #task2 .tablet-green {
         grid-template-rows: repeat(3, 100px);
     }
 
@@ -151,11 +156,11 @@ body {
     .tablet-green .cell:nth-child(10),
     .tablet-green .cell:nth-child(11) { grid-row: 3; }
 
-    .tablet-fourth {
+    #task2 .tablet-fourth {
         grid-template-rows: 100px;
     }
 
-    .tablet-brown {
+    #task2 .tablet-brown {
         grid-template-rows: repeat(2, 100px);
     }
 }
@@ -169,32 +174,32 @@ body {
         max-width: 100%;
     }
 
-    .desktop {
+    #task2 .desktop {
         display: block;
     }
 
-    .desktop-first {
+    #task2 .desktop-first {
         grid-template-rows: 100px;
     }
 
-    .desktop-second {
+    #task2 .desktop-second {
         grid-template-rows: repeat(2, 100px);
     }
 
-    .desktop-second .cell:nth-child(1),
-    .desktop-second .cell:nth-child(2) {
+    #task2 .desktop-second .cell:nth-child(1),
+    #task2 .desktop-second .cell:nth-child(2) {
         grid-row: 1;
     }
 
-    .desktop-second .cell:nth-child(3) {
+    #task2 .desktop-second .cell:nth-child(3) {
         grid-row: 2;
     }
 
-    .desktop-green {
+    #task2 .desktop-green {
         grid-template-rows: repeat(3, 100px);
     }
 
-    .green-right {
+    #task2 .green-right {
         grid-column: 4 / 13;
         grid-row: 1 / 4;
 
@@ -203,11 +208,11 @@ body {
         grid-template-rows: repeat(3, 100px);
     }
 
-    .desktop-fourth {
+    #task2 .desktop-fourth {
         grid-template-rows: 100px;
     }
 
-    .desktop-brown {
+    #task2 .desktop-brown {
         grid-template-rows: repeat(2, 100px);
     }
 }
