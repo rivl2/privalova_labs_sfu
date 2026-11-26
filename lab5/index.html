@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа – Вариант 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .task {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 90%;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #176b38;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Практическая работа</h1>
+    <h2 style="text-align:center;">Вариант 2</h2>
+
+    <!-- Задание 1 -->
+    <div class="task">
+        <h2>Задание 1. Числа Фибоначчи</h2>
+        <p>Найти N-й член последовательности Фибоначчи.</p>
+
+        <input type="number" id="fibonacciInput"
+               placeholder="Введите N">
+
+        <button onclick="fibonacci()">Вычислить</button>
+
+        <div class="result" id="fibonacciResult"></div>
+    </div>
+
+    <!-- Задание 2А -->
+    <div class="task">
+        <h2>Задание 2А. Обработка массива</h2>
+        <p>
+            Найти сумму элементов между первым и последним
+            элементами, близкими к числу π.
+        </p>
+
+        <input type="text" id="arrayAInput"
+               value="1, 2, 3.14159265, 4, 5, 3.14159265, 7, 8">
+
+        <button onclick="arrayA()">Вычислить сумму</button>
+
+        <div class="result" id="arrayAResult"></div>
+    </div>
+
+    <!-- Задание 2Б -->
+    <div class="task">
+        <h2>Задание 2Б. Фильтрация массива</h2>
+        <p>
+            Удалить элементы, модуль целой части которых
+            состоит только из нечётных цифр.
+        </p>
+
+        <input type="text" id="arrayBInput"
+               value="135.7, 246.5, -357.8, 123.4, 579.2, 42.1, 111.9">
+
+        <button onclick="arrayB()">Обработать массив</button>
+
+        <div class="result" id="arrayBResult"></div>
+    </div>
+
+    <!-- Задание 4 -->
+    <div class="task">
+        <h2>Задание 4. Обработка строки</h2>
+        <p>
+            Сделать нечётные буквы заглавными,
+            а чётные — строчными.
+        </p>
+
+        <input type="text" id="wordInput"
+               placeholder="Введите слово">
+
+        <button onclick="changeWord()">Преобразовать</button>
+
+        <div class="result" id="wordResult"></div>
+    </div>
+
+</div>
+
+<script>
+
+// ЗАДАНИЕ 1. Числа Фибоначчи
+
+function fibonacci() {
+    let n = Number(document.getElementById("fibonacciInput").value);
+    let result = document.getElementById("fibonacciResult");
+
+    if (!Number.isInteger(n) || n < 1) {
+        result.textContent = "Введите натуральное число!";
+        return;
+    }
+
+    let a = 1;
+    let b = 1;
+
+    if (n === 1 || n === 2) {
+        result.textContent = "Результат: 1";
+        return;
+    }
+
+    for (let i = 3; i <= n; i++) {
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+
+    result.textContent = "Результат: " + b;
+}
+
+
+// ЗАДАНИЕ 2А. Сумма элементов массива
+
+function arrayA() {
+    let arr = document.getElementById("arrayAInput").value
+        .split(",")
+        .map(Number);
+
+    let first = -1;
+    let last = -1;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (Math.abs(arr[i] - Math.PI) <= 0.00001) {
+            if (first === -1) {
+                first = i;
+            }
+
+            last = i;
+        }
+    }
+
+    let sum = 0;
+
+    if (first !== -1 && last !== -1) {
+        for (let i = first + 1; i < last; i++) {
+            sum += arr[i];
+        }
+
+        document.getElementById("arrayAResult").textContent =
+            "Сумма элементов: " + sum;
+    } else {
+        document.getElementById("arrayAResult").textContent =
+            "В массиве не найдены два элемента, близкие к π.";
+    }
+}
+
+
+// ЗАДАНИЕ 2Б. Удаление элементов массива
+
+function arrayB() {
+    let arr = document.getElementById("arrayBInput").value
+        .split(",")
+        .map(Number);
+
+    if (arr.some(num => !Number.isFinite(num))) {
+        document.getElementById("arrayBResult").textContent =
+            "Введите корректные числа через запятую.";
+        return;
+    }
+
+    arr = arr.filter(function(num) {
+        let n = Math.trunc(Math.abs(num));
+        let digits = String(n);
+
+        for (let i = 0; i < digits.length; i++) {
+            if (Number(digits[i]) % 2 === 0) {
+                return true;
+            }
+        }
+
+        return false;
+    });
+
+    document.getElementById("arrayBResult").textContent =
+        "Массив после удаления: " + arr.join(", ");
+}
+
+
+// ЗАДАНИЕ 4. Обработка строки
+
+function changeWord() {
+    let word = document.getElementById("wordInput").value;
+    let result = "";
+
+    for (let i = 0; i < word.length; i++) {
+        if (i % 2 === 0) {
+            result += word[i].toUpperCase();
+        } else {
+            result += word[i].toLowerCase();
+        }
+    }
+
+    document.getElementById("wordResult").textContent =
+        "Результат: " + result;
+}
+
+</script>
+
+</body>
+</html>
